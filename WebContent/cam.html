@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>INT FLOW CODING TEST</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href=".\assets\css\cam.css" />
+</head>
+<body onload="time()">}
+    <!-- Header -->
+        <header id="header" class="alt">
+            <div class="logo"><span id="now"></span></div>
+            <span>관제페이지</span>
+            <span>이전페이지</span>
+            <a href="#menu" class="toggle"><span>Menu</span></a>
+        </header>
+
+        <section id="three" class="wrapper style2">
+            <div class="inner">
+                <div class="grid-style">
+
+                    <div>
+                        <div class="box">
+                            <div class="cam-box">
+                                <video class="video" autoplay loop muted controls>
+                                    <source src=".\images\video1.mp4" type="video/mp4">
+                                    check video
+                                </video>
+                            </div>
+                            <!-- li 선택시 video src 변경(a태그 부여) -->
+                            <!-- 선택 개체별 자료 / Chart 값 수정 
+                            카메라 선택시 안에 있는 개체 값 변경(카메라별 개체번호 인식 1~4는 동일한데 어떤식으로?? 차트만 변경?)-->
+                            <div class="cam-list">
+                                <ul>
+                                    <li><a id="cam0" class="lists" onclick="camChange('cam0')">전체 카메라</a></li>
+                                    <li><a id="cam1" class="lists" onclick="camChange('cam1')">1번 카메라</a></li>
+                                    <li><a id="cam2" class="lists" onclick="camChange('cam2')">2번 카메라</a></li>
+                                    <li><a id="cam3" class="lists" onclick="camChange('cam3')">3번 카메라</a></li>
+                                    <li><a id="cam4" class="lists" onclick="camChange('cam4')">4번 카메라</a></li>
+                                    <li><a id="cam5" class="lists" onclick="camChange('cam5')">5번 카메라</a></li>
+                                    <li><a id="cam6" class="lists" onclick="camChange('cam6')">6번 카메라</a></li>
+                                    <li><a id="cam7" class="lists" onclick="camChange('cam7')">7번 카메라</a></li>
+                                </ul>
+                            </div>
+                            <div class="animal-list">
+                                <ul>
+                                    <li><a id="ani0" class="lists" onclick="aniChange('ani0')">전체 개체</a></li>
+                                    <li><a id="ani1" class="lists" onclick="aniChange('ani1')">1번 개체</a></li>
+                                    <li><a id="ani2" class="lists" onclick="aniChange('ani2')">2번 개체</a></li>
+                                    <li><a id="ani3" class="lists" onclick="aniChange('ani3')">3번 개체</a></li>
+                                    <li><a id="ani4" class="lists" onclick="aniChange('ani4')">4번 개체</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="line_down_x"></div>
+        </section>
+
+        <script src=".\assets\js\jquery.min.js"></script>
+        <script src=".\assets\js\jquery.scrolly.min.js"></script>
+        <script src=".\assets\js\jquery.scrollex.min.js"></script>
+        <script src=".\assets\js\skel.min.js"></script>
+        <script src=".\assets\js\util.js"></script>
+        <script src=".\assets\js\main.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+		<!-- 나오는 month 값 2월=1 변환확인(추가로 01, 02 형태 변환-if문 10 이하) 시,분,초는 별개 필요 var타입 주의-->
+        <script language="javascript">
+            function time(){
+             var time= new Date(); //시간받기위해서 new date
+             var month = time.getMonth()+1;
+             var day = null;
+             if (time.getDay()==0) {
+ 				day = "일"
+ 			}else if (time.getDay()==1) {
+				day = "월"
+			}else if (time.getDay()==2) {
+				day = "화"
+			}else if (time.getDay()==3) {
+				day = "수"
+			}else if (time.getDay()==4) {
+				day = "목"
+			}else if (time.getDay()==5) {
+				day = "금"
+			}else if (time.getDay()==6) {
+				day = "토"
+			}
+			// 문장을 묶어 변수로 넣으면 코드 간편해질듯 추후 고려
+             if (month < 10) {
+                document.getElementById("now").innerHTML=time.getUTCFullYear()+"-0"+month+"-"+time.getDate()+"["+day+"] "+time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
+             }else{
+            	 document.getElementById("now").innerHTML=time.getUTCFullYear()+"-"+month+"-"+time.getDate()+"["+day+"] "+time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
+             }   
+                setInterval("time()",1000);     //1초 지난후 time()실행
+            }
+            
+            function camChange(obj) {
+                var listStyle = document.getElementsByClassName("lists")
+                
+                for(var i = 0; i < listStyle.length; i++){
+                    listStyle[i].style="color:white;";
+                }
+                document.getElementById(obj).style="color:green;";
+                document.getElementById("ani0").style="color:green;";
+            };
+            function aniChange(obj) {
+                var listStyle = document.getElementsByClassName("lists")
+                
+                for(var i = 8; i < listStyle.length; i++){
+                    listStyle[i].style="color:white;";
+                }
+                document.getElementById(obj).style="color:green;";
+
+            };
+        </script>
+
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['line']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('number', '시간변화');
+                data.addColumn('number', '이상행동');
+                data.addColumn('number', '이동성');
+                data.addColumn('number', '식사량');
+                data.addColumn('number', '흡수량');
+
+                /* 엑셀에서 추출한 값 표 출력(animal_li 선택시 변환) java poi(엑셀 값 가져요기) 
+                추후 dual y 형태로 작업필요
+                background-color 어두운 색으로 변환(차트 스타일 변환 확인)*/
+                data.addRows([
+                    [1,  37.8, 80.8, 41.8, 10],
+                    [2,  30.9, 69.5, 32.4, 10],
+                    [3,  25.4,   57, 25.7, 10],
+                    [4,  11.7, 18.8, 10.5, 10],
+                    [5,  11.9, 17.6, 10.4, 10],
+                    [6,   8.8, 13.6,  7.7, 10],
+                    [7,   7.6, 12.3,  9.6, 10],
+                    [8,  12.3, 29.2, 10.6, 10],
+                    [9,  16.9, 42.9, 14.8, 10],
+                    [10, 12.8, 30.9, 11.6, 10],
+                    [11,  5.3,  7.9,  4.7, 10],
+                    [12,  6.6,  8.4,  5.2, 10],
+                    [13,  4.8,  6.3,  3.6, 10],
+                    [14,  4.2,  6.2,  3.4, 10]
+                ]);
+
+                var options = {
+                    chart: {
+                    title: 'Animal Chart'
+                    },
+                    width: 1300,
+                    height: 700,
+                    axes: {
+                    x: {
+                        0: {side: 'bottom'}
+                    }}
+                };
+
+                var chart1 = new google.charts.Line(document.getElementById('line_down_x'));
+
+                chart1.draw(data, google.charts.Line.convertOptions(options));
+            };
+        </script>
+</body>
+</html>

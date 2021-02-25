@@ -1,0 +1,262 @@
+@charset "UTF-8";
+@import url(font-awesome.min.css);
+@import url("https://fonts.googleapis.com/css?family=Taviraj:300,400,700,300i,400i,700i");
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body{
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+ol, ul {
+    list-style: none;
+}
+
+/* Box Model */
+
+/* *, *:before, *:after {
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.075);
+} */
+
+/* Box */
+
+.box {
+    margin-top: 50px;
+    margin-bottom: 2rem;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.075);
+    width: 720px;
+    height: 440px;
+    border-color: rgba(144, 144, 144, 0.25);
+}
+
+    .box > :last-child,
+    .box > :last-child > :last-child,
+    .box > :last-child > :last-child > :last-child {
+        margin-bottom: 0;
+    }
+
+    .box.alt {
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+    }
+
+.cam-box{
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 5%;
+}
+
+.cam-list{
+    position: relative;
+    left: 730px;
+    bottom: 440px;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75) ;
+    border-radius: 5%;
+}
+
+.video{
+    width: 640px;
+    height: 360px;
+    padding: 40px;
+}
+
+.cam-list>ul>li{
+    background-color: rgba(144, 144, 144, 0.25);
+    margin: 5px;
+}
+
+.animal-list{
+    position: relative;
+    left: 1100px;
+    bottom: 880px;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75) ;
+    border-radius: 5%;
+}
+
+.animal-list>ul>li{
+    background-color: rgba(144, 144, 144, 0.25);
+    padding: 20px;
+    margin: 10px;
+}
+
+/* List */
+ul {
+    list-style: none;
+    margin: 0 0 2rem 0;
+    padding: 1rem;
+    border-radius: 5%;
+}
+
+ul>li{
+	color:green;
+}
+
+    ul li {
+        padding: 0.7rem;
+        text-align: center;
+        color: white;
+    }
+
+    ul.alt {
+        list-style: none;
+        padding-left: 0;
+    }
+
+        ul.alt li {
+            border-top: solid 1px;
+            padding: 0.5rem 0;
+        }
+
+            ul.alt li:first-child {
+                border-top: 0;
+                padding-top: 0;
+            }
+
+ul.alt li {
+    border-top-color: rgba(144, 144, 144, 0.25);
+}
+
+/* Chart */
+
+#line_down_x{
+    left: 100px;
+}
+
+/* Header */
+
+body.subpage {
+    padding-top: 3.125em;
+}
+
+#header {
+    background: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    height: 3.25em;
+    left: 0;
+    line-height: 3.25em;
+    position: fixed;
+    text-align: right;
+    top: 0;
+    width: 100%;
+    z-index: 10001;
+}
+
+    #header .toggle span {
+        display: none;
+    }
+
+    #header > .logo {
+        display: inline-block;
+        height: inherit;
+        left: 1.25rem;
+        line-height: inherit;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+    }
+
+        #header > .logo a {
+            font-size: 1.25rem;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
+
+        #header > .logo span {
+            font-weight: 300;
+            font-size: .75rem;
+            color: rgba(255, 255, 255, 0.5);	
+        }
+
+    #header > a {
+        -moz-transition: color 0.2s ease-in-out;
+        -webkit-transition: color 0.2s ease-in-out;
+        -ms-transition: color 0.2s ease-in-out;
+        transition: color 0.2s ease-in-out;
+        display: inline-block;
+        padding: 0 0.75em;
+        color: inherit;
+        text-decoration: none;
+        color: #FFF;
+    }
+
+        #header > a[href="#menu"] {
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+            #header > a[href="#menu"]:before {
+                content: "";
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: FontAwesome;
+                font-style: normal;
+                font-weight: normal;
+                text-transform: none !important;
+            }
+
+            #header > a[href="#menu"]:before {
+                margin: 0 0.5em 0 0;
+            }
+
+        #header > a + a[href="#menu"]:last-child {
+            border-left: solid 1px rgba(0, 0, 0, 0.15);
+            padding-left: 1.25em;
+            margin-left: 0.5em;
+        }
+
+        #header > a:last-child {
+            padding-right: 1.25em;
+        }
+
+        @media screen and (max-width: 736px) {
+
+            #header > a {
+                padding: 0 0.5em;
+            }
+
+                #header > a + a[href="#menu"]:last-child {
+                    padding-left: 1em;
+                    margin-left: 0.25em;
+                }
+
+                #header > a:last-child {
+                    padding-right: 1em;
+                }
+        }
+
+    #header.alt {
+        -moz-animation: none;
+        -webkit-animation: none;
+        -ms-animation: none;
+        animation: none;
+        background-color: rgb(0, 0, 0);
+        box-shadow: none;
+        overflow: hidden;
+        position: absolute;
+    }
+
+        #header.alt h1 {
+            left: 2.5em;
+        }
+
+        #header.alt nav {
+            right: 2.5em;
+        }
